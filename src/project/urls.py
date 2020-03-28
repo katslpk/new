@@ -8,7 +8,7 @@ here = Path(__file__).parent.resolve()
 
 
 def view(r):
-    index = here.parent.parent / "index.html"
+    index = here.parent.parent / r / "index.html"
     with index.open() as f:
         return HttpResponse(f.read())
 
@@ -16,6 +16,6 @@ def view(r):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
-    path('resume/', view),
+    path('resume/', view('resume')),
     path('Profile.html', view),
 ]
