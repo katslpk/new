@@ -16,4 +16,5 @@ def view(r):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
+    path('profil/', view),
 ]
