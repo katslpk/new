@@ -14,7 +14,7 @@ def view(r):
 
 
 def resume(r):
-    index = here.parent.parent / "Profile.html"
+    index = here.parent.parent / "resume.html"
     with index.open() as f:
         return HttpResponse(f.read())
 
@@ -22,6 +22,5 @@ def resume(r):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
-    path('resume/', resume),
-    path('Profile.html', resume),
+    path('resume.html', resume),
 ]
