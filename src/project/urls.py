@@ -19,10 +19,10 @@ def resume(r):
         return HttpResponse(f.read())
 
 
-def img(r):
-    img.view = here.parent.parent / "IMG_me.jpg"
-    with img.view.open("rb") as f:
-        return HttpResponse(f.read)
+def img(rb):
+    index = here.parent.parent / "IMG_me.jpg"
+    with index.open("rb") as f:
+        return HttpResponse(f.read())
 
 
 urlpatterns = [
