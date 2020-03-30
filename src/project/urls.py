@@ -29,5 +29,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
     path('resume.html', resume),
-    path('IMG_me.jpg')
+    path('IMG_me.jpg', img)
 ]
