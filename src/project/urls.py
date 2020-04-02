@@ -4,30 +4,46 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
+
 here = Path(__file__).parent.resolve()
 
 
-def view(r):
+def view1(r):
     index = here.parent.parent / "index.html"
     with index.open() as f:
         return HttpResponse(f.read())
 
 
-def resume(r):
-    index = here.parent.parent / "resume.html"
+def view2(r):
+    index = here.parent.parent / "contact.html"
     with index.open() as f:
         return HttpResponse(f.read())
 
 
-def img(rb):
+def view3(r):
+    index = here.parent.parent / "education.html"
+    with index.open() as f:
+        return HttpResponse(f.read())
+
+
+def view4(rb):
+    index = here.parent.parent / "head.css"
+    with index.open("rb") as f:
+        return HttpResponse(f.read(), content_type="text/css")
+
+
+def view5(rb):
     index = here.parent.parent / "IMG_me.jpg"
     with index.open("rb") as f:
-        return HttpResponse(f.read())
+        return HttpResponse(f.read(), content_type="image/jpg")
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', view),
-    path('resume.html', resume),
-    path('IMG_me.jpg', img)
+    path('index.html', view1),
+    path('contact.html', view2),
+    path('education.html', view3),
+    path('head.css', view4),
+    path('', view1),
+    path('IMG_me.jpg', view5),
 ]
