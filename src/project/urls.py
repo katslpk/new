@@ -1,41 +1,41 @@
 from pathlib import Path
 
 from django.contrib import admin
+from django.conf import settings
 from django.http import HttpResponse
 from django.urls import path
-
+from django.shortcuts import render
 
 here = Path(__file__).parent.resolve()
+head = here.parent.parent / "head.css"
+IMG_me = here.parent.parent / "IMG_me.jpg"
 
 
-def view1(r):
-    index = here.parent.parent / "index.html"
-    with index.open() as f:
-        return HttpResponse(f.read())
+def read_static(fn, ct):
+    with fn.open("rb") as src:
+        content = src.read()
+        resp = HttpResponse(content, content_type=ct)
+        return resp
 
 
-def view2(r):
-    index = here.parent.parent / "contact.html"
-    with index.open() as f:
-        return HttpResponse(f.read())
+def view4(rb, f=read_static):
+    return f(head, "text/css")
 
 
-def view3(r):
-    index = here.parent.parent / "education.html"
-    with index.open() as f:
-        return HttpResponse(f.read())
+def view5(rb, f=read_static):
+    return f(IMG_me, "image/jpg")
 
 
-def view4(rb):
-    index = here.parent.parent / "head.css"
-    with index.open("rb") as f:
-        return HttpResponse(f.read(), content_type="text/css")
+def view1(req):
+    return render(req, "index.html")
 
 
-def view5(rb):
-    index = here.parent.parent / "IMG_me.jpg"
-    with index.open("rb") as f:
-        return HttpResponse(f.read(), content_type="image/jpg")
+def view2(req):
+    return render(req, "contact.html")
+
+
+def view3(req):
+    return render(req, "education.html")
 
 
 urlpatterns = [
