@@ -6,24 +6,24 @@ from django.http import HttpResponse
 from django.urls import path
 from django.shortcuts import render
 
-here = Path(__file__).parent.resolve()
-head = here.parent.parent / "head.css"
-IMG_me = here.parent.parent / "IMG_me.jpg"
+#here = Path(__file__).parent.resolve()
+#head = here.parent.parent / "head.css"
+#IMG_me = here.parent.parent / "IMG_me.jpg"
 
 
-def read_static(fn, ct):
-    with fn.open("rb") as src:
-        content = src.read()
-        resp = HttpResponse(content, content_type=ct)
-        return resp
+#def read_static(fn, ct):
+  #  with fn.open("rb") as src:
+     #   content = src.read()
+      #  resp = HttpResponse(content, content_type=ct)
+        #return resp
 
 
-def view4(rb, f=read_static):
-    return f(head, "text/css")
+#def view4(rb, f=read_static):
+    #return f(head, "text/css")
 
 
-def view5(rb, f=read_static):
-    return f(IMG_me, "image/jpg")
+#def view5(rb, f=read_static):
+   # return f(IMG_me, "image/jpg")
 
 
 def view1(req):
@@ -43,7 +43,6 @@ urlpatterns = [
     path('index.html', view1),
     path('contact.html', view2),
     path('education.html', view3),
-    path('head.css', view4),
     path('', view1),
-    path('IMG_me.jpg', view5),
 ]
+
