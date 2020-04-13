@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def view3(req):
-    return render(req, "education/index.html")
+class IndexView(TemplateView):
+    template_name = "education/index.html"
+
