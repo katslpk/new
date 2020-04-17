@@ -9,4 +9,3 @@ class UserInfo(m.Model):                    #созд база с 2мя коло
 
     def __str__(self):
         return f"UserInfo(id={self.pk},name={self.name!r})"
-        

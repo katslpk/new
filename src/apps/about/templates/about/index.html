@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title%} Resume {% endblock %}
+{% block title%} {{ name }} {% endblock %}
 
 {% block body %}
 
@@ -12,7 +12,8 @@
    <tr>
     <td width="200" valign="top"><img src="{% static 'index/IMG_me.jpg' %}" style="width:400px">
      <td valign="top">
-       <p>Hi! My name is Kate. And I'm a junior python developer!</p></td>
+      {{ greeting }}
+   </td>
    </tr>
   </table>
 
