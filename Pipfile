@@ -4,8 +4,11 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+httpie = "*"
 
 [packages]
 django = "*"
-
-
+whitenoise = "*"
+dj-database-url = "*"
+dynaconf = {extras = ["yaml"],version = "*"}
+psycopg2-binary = "*"

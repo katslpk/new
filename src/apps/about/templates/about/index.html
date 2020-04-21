@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%} {{ name }} {% endblock %}
+
+{% block body %}
+
+
+
+
+  <table width="90%" cellspacing="0" cellpadding="5">
+   <tr>
+    <td width="200" valign="top"><img src="{% static 'index/IMG_me.jpg' %}" style="width:400px">
+     <td valign="top">
+      {{ greeting }}
+   </td>
+   </tr>
+  </table>
+
+{% endblock %}
