@@ -4,7 +4,22 @@
 
 {% block body %}
 
+<article>
+        {% for project in object_list %}
 
-<p>BSEU</p>
+            <section>
+                <h3>from {{ project.started_at }} till {{ project.finished_at }}: in XXX</h3>
+                <p>{{ project.summary }}</p>
 
+                <p>Framework:</p>
+                <ul>
+                    {% for technology in project.technologies.all %}
+                        <li>{{ technology.name }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+        {% endfor %}
+
+</article>
 {% endblock %}

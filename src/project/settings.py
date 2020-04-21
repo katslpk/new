@@ -14,8 +14,6 @@ DEBUG = _settings.DEBUG
 
 ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
 
-
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,7 +66,7 @@ if _settings.ENV_FOR_DYNACONF == "heroku":
 
 DATABASES = {
     "default": dj_database_url.parse(_db_url, conn_max_age=600),
-    }
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -84,7 +82,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 LANGUAGE_CODE = 'en-us'
 
