@@ -12,3 +12,5 @@ whitenoise = "*"
 dj-database-url = "*"
 dynaconf = {extras = ["yaml"],version = "*"}
 psycopg2-binary = "*"
+isort = "*"
+jinja2 = "*"

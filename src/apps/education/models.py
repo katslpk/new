@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Technology(models.Model):
+class Degree(models.Model):
     name = models.TextField(unique=True)
     description = models.TextField(null=True, blank=True)
 
@@ -9,12 +9,14 @@ class Technology(models.Model):
         return f"#{self.pk}:{self.name!r}"
 
 
-class Project(models.Model):
+class Education(models.Model):
     started_at = models.DateField(null=True, blank=True)
     finished_at = models.DateField(null=True, blank=True)
+    name = models.TextField(null=True, blank=True)
     summary = models.TextField(null=True, blank=True)
-    technologies = models.ManyToManyField(Technology, related_name="projects")
+    degree = models.ManyToManyField(Degree, related_name="education")
 
-class Responsibility(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="responsibilities")
+
+class Skills(models.Model):
+    degree = models.ForeignKey(Degree, on_delete=models.CASCADE, related_name="skills")
     summary = models.TextField()

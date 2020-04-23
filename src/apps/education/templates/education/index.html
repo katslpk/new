@@ -5,17 +5,32 @@
 {% block body %}
 
 <article>
-        {% for project in object_list %}
+        {% for education in object_list %}
 
             <section>
-                <h3>from {{ project.started_at }} till {{ project.finished_at }}: in XXX</h3>
-                <p>{{ project.summary }}</p>
+                <h3>from {{ education.started_at }} till {{ education.finished_at }}: in {{ education.name }}</h3>
+                <p>{{ education.summary }}</p>
 
-                <p>Framework:</p>
+                <p>Degree:</p>
                 <ul>
-                    {% for technology in project.technologies.all %}
-                        <li>{{ technology.name }}</li>
+                    {% for degree in education.degree.all %}
+                        <li>{{ degree.name }}</li>
+                            <p>Description</p>
+                            <li>{{ degree.description }}</li>
                     {% endfor %}
+
+                    {% if degree.skills.count %}
+
+                                <h4>Skills:</h4>
+
+                                <ul>
+                                {% for skills in degree.skills.all %}
+                                    <li>{{ skills }}</li>
+                                {% endfor %}
+                                </ul>
+
+                    {% endif %}
+
                 </ul>
             </section>
 

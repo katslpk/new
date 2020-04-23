@@ -1,14 +1,19 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from apps.education.models import Project, Technology
+from apps.education.models import Degree, Education, Skills
 
 
-@admin.register(Project)
-class ProjectInfoAdminModel(ModelAdmin):
+@admin.register(Degree)
+class DegreeInfoAdminModel(ModelAdmin):
     pass
 
 
-@admin.register(Technology)
-class TechnologyAdminModel(ModelAdmin):
+@admin.register(Education)
+class EducationAdminModel(ModelAdmin):
+    pass
+
+
+@admin.register(Skills)
+class SkillsAdminModel(ModelAdmin):
     pass
