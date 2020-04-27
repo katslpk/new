@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{% block title %} {% endblock %}</title>
+  <title>My expensive car</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <div class="header">
-  <h1>Katsiaryna Kutseika</h1>
+  <h2>{% block head %} {% endblock %}</h2>
 </div>
 
 <body>
+
+<ul>
   <link href="{{ static ('head.css') }}" rel="stylesheet" type="text/css">
-  <div class="topnav">
-  <a class="{% if ns == 'about' %}active{% endif %}" href="{{ url('about:index') }}">About</a>
-  <a class="{% if ns == 'education' %}active{% endif %}" href="{{ url ('education:index') }}">Education</a>
-  <a class="{% if ns == 'contact' %}active{% endif %}" href="{{ url ('contact:index') }}">Contact</a>
-</div>
+  <li><a class="{% if ns == 'about' %}active{% endif %}" href="{{ url('about:index') }}">About</a></li>
+  <li><a class="{% if ns == 'education' %}active{% endif %}" href="{{ url ('education:index') }}">Service book</a></li>
+  <li><a class="{% if ns == 'contact' %}active{% endif %}" href="{{ url ('contact:index') }}">Contact</a></li>
+  </ul>
+  <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+
   {% block body %} {% endblock %}
 
 </body>

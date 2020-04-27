@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Degree(models.Model):
+class Station(models.Model):
     name = models.TextField(unique=True)
     description = models.TextField(null=True, blank=True)
 
@@ -9,14 +9,12 @@ class Degree(models.Model):
         return f"#{self.pk}:{self.name!r}"
 
 
-class Education(models.Model):
-    started_at = models.DateField(null=True, blank=True)
-    finished_at = models.DateField(null=True, blank=True)
-    name = models.TextField(null=True, blank=True)
-    summary = models.TextField(null=True, blank=True)
-    degree = models.ManyToManyField(Degree, related_name="education")
+class Work(models.Model):
+    date = models.DateField(null=True, blank=True)
+    mileage = models.TextField(null=True, blank=True)
+    type = models.TextField(null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
+    cost = models.FloatField(null=True, blank=True)
+    station = models.ManyToManyField(Station, related_name="work")
 
 
-class Skills(models.Model):
-    degree = models.ForeignKey(Education, on_delete=models.CASCADE, related_name="skills")
-    summary = models.TextField()

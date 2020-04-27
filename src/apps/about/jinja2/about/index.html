@@ -1,19 +1,11 @@
 {% extends "base.html" %}
 
-{% block title%} {{ name }} {% endblock %}
+{% block head %} Hi, {{ name }}! {% endblock %}
 
 {% block body %}
 
+<p>This is personal site for your car.</p>
+<p>Please, select your car and add all information </p>
 
-
-
-  <table width="90%" cellspacing="0" cellpadding="5">
-   <tr>
-    <td width="200" valign="top"><img src="{{ static ('index/IMG_me.jpg') }}" style="width:400px">
-     <td valign="top">
-      {{ greeting }}
-   </td>
-   </tr>
-  </table>
 
 {% endblock %}

@@ -1,41 +1,51 @@
 {% extends "base.html" %}
 
-{% block title %} Education {% endblock %}
 
 {% block body %}
 
-<article>
-        {% for education in object_list %}
+<h1>Your personal service book</h1>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-            <section>
-                <h3>from {{ education.started_at }} till {{ education.finished_at }}: in {{ education.name }}</h3>
-                <p>{{ education.summary }}</p>
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
-                    {% if education.degree %}
-                        <p>Degree:</p>
-                        <ul>
-                            {% for degree in education.degree.all() %}
-                            <li>{{ degree.name }}</li>
-                            <p>Description</p>
-                            <li>{{ degree.description }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Mileage</th>
+    <th>Type of work</th>
+    <th>Cost, BYN</th>
+    <th>Service station</th>
+    <th>Comment</th>
+  </tr>
+  {% for work in object_list %}
+      <tr>
+          <td>{{ work.date }}</td>
+          <td>{{ work.mileage }}</td>
+          <td>{{ work.type }}</td>
+          <td>{{ work.cost }}</td>
+            {% if work.station %}
+                {% for station in work.station.all() %}
+                <td>{{ station.name}}</td>
+                {% endfor %}
+            {% endif %}
+          <td>{{ work.comment }}</td>
+      </tr>
+  {% endfor %}
 
-                    {% if education.skills.count() %}
+</table>
 
-                                <h4>Skills:</h4>
-
-                                <ul>
-                                {% for skills in education.skills.all() %}
-                                    <li>{{ skills.summary }}</li>
-                                {% endfor %}
-                                </ul>
-
-                    {% endif %}
-            </section>
-
-        {% endfor %}
-
-</article>
 {% endblock %}
+

@@ -1,8 +1,8 @@
 from django.db import models as m
 
-class UserInfo(m.Model):                    #созд база с 2мя колонками
-    name = m.TextField(unique=True)         #нельзя пустую колонку, и будет еще уникальна
-    greeting = m.TextField(null=True, blank=True)       #тип чтобы были доступны пустые стоки
+class UserInfo(m.Model):
+    name = m.TextField(unique=True)
+    greeting = m.TextField(null=True, blank=True)
 
     class Meta:
         verbose_name_plural = "User Info"
