@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="header">
+  <h1>Katsiaryna Kutseika</h1>
+</div>
+
+<body>
+  <link href="{{ static ('head.css') }}" rel="stylesheet" type="text/css">
+  <div class="topnav">
+  <a class="{% if ns == 'about' %}active{% endif %}" href="{{ url('about:index') }}">About</a>
+  <a class="{% if ns == 'education' %}active{% endif %}" href="{{ url ('education:index') }}">Education</a>
+  <a class="{% if ns == 'contact' %}active{% endif %}" href="{{ url ('contact:index') }}">Contact</a>
+</div>
+  {% block body %} {% endblock %}
+
+</body>
+</html>

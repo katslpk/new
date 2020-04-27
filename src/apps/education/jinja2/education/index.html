@@ -11,27 +11,28 @@
                 <h3>from {{ education.started_at }} till {{ education.finished_at }}: in {{ education.name }}</h3>
                 <p>{{ education.summary }}</p>
 
-                <p>Degree:</p>
-                <ul>
-                    {% for degree in education.degree.all %}
-                        <li>{{ degree.name }}</li>
+                    {% if education.degree %}
+                        <p>Degree:</p>
+                        <ul>
+                            {% for degree in education.degree.all() %}
+                            <li>{{ degree.name }}</li>
                             <p>Description</p>
                             <li>{{ degree.description }}</li>
-                    {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
 
-                    {% if degree.skills.count %}
+                    {% if education.skills.count() %}
 
                                 <h4>Skills:</h4>
 
                                 <ul>
-                                {% for skills in degree.skills.all %}
-                                    <li>{{ skills }}</li>
+                                {% for skills in education.skills.all() %}
+                                    <li>{{ skills.summary }}</li>
                                 {% endfor %}
                                 </ul>
 
                     {% endif %}
-
-                </ul>
             </section>
 
         {% endfor %}
