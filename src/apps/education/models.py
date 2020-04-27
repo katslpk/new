@@ -18,5 +18,5 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
-    degree = models.ForeignKey(Degree, on_delete=models.CASCADE, related_name="skills")
+    degree = models.ForeignKey(Education, on_delete=models.CASCADE, related_name="skills")
     summary = models.TextField()
