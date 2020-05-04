@@ -9,7 +9,6 @@ from apps.onboarding.views import SignOutView
 from apps.onboarding.views import SignUpConfirmedView
 from apps.onboarding.views import SignUpView
 
-
 app_name = OnboardingConfig.label
 
 urlpatterns = [

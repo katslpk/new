@@ -1,6 +1,7 @@
 from django.urls import path
-from apps.contact.views import IndexView
+
 from apps.contact.apps import ContactConfig
+from apps.contact.views import IndexView
 
 app_name = ContactConfig.name
 

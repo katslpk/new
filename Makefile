@@ -23,7 +23,7 @@ MANAGE := ${PY} python src/manage.py
 
 .PHONY: format
 format:
-	${PY} isort --virtual-env ${VENV} --recursive --apply ${HERE}
+	${PY} isort --virtual-env ${VENV} --recursive --apply .
 	${PY} black .
 
 
