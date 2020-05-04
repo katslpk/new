@@ -6,6 +6,10 @@ verify_ssl = true
 [dev-packages]
 httpie = "*"
 isort = "*"
+coverage = "*"
+black = "==19.10b0"
+codecov = "*"
+pudb = "*"
 
 [packages]
 django = "*"
@@ -14,3 +18,4 @@ dj-database-url = "*"
 dynaconf = {extras = ["yaml"],version = "*"}
 psycopg2-binary = "*"
 jinja2 = "*"
+delorean = "*"

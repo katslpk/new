@@ -1,8 +1,7 @@
-
 HERE := $(shell pwd)
 VENV := $(shell pipenv --venv)
 PYTHONPATH := ${HERE}/src
-TEST_PARAMS := --verbosity 2 --pythonpath ${PYTHONPATH}
+TEST_PARAMS := --verbosity 2 --pythonpath "${PYTHONPATH}"
 PSQL_PARAMS := --host=localhost --username=kate --password
 
 
@@ -11,11 +10,11 @@ ifeq ($(origin PIPENV_ACTIVE), undefined)
 endif
 
 ifeq ($(ENV_FOR_DYNACONF), travis)
-	PY :=
-	TEST_PARAMS := --failfast --keepdb --verbosity 0 --pythonpath ${PYTHONPATH}
+	RUN :=
+	TEST_PARAMS := --failfast --keepdb --verbosity 1 --pythonpath ${PYTHONPATH}
 	PSQL_PARAMS := --host=localhost --username=postgres --no-password
 else ifeq ($(ENV_FOR_DYNACONF), heroku)
-	PY :=
+	RUN :=
 endif
 
 
@@ -63,7 +62,7 @@ test:
 	ENV_FOR_DYNACONF=test \
 	${PY} coverage run \
 		src/manage.py test ${TEST_PARAMS} \
-			applications \
+			apps \
 			project \
 
 	${PY} coverage report
