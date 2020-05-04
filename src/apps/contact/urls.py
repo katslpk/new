@@ -5,5 +5,5 @@ from apps.contact.apps import ContactConfig
 app_name = ContactConfig.name
 
 urlpatterns = [
-    path('', IndexView.as_view(), name = "index"),
+    path("", IndexView.as_view(), name="index"),
 ]

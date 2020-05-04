@@ -24,7 +24,7 @@ MANAGE := ${PY} python src/manage.py
 .PHONY: format
 format:
 	${PY} isort --virtual-env ${VENV} --recursive --apply ${HERE}
-	${PY} black ${HERE}
+	${PY} black .
 
 
 .PHONY: run

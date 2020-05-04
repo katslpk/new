@@ -5,9 +5,11 @@ from typing import Text
 from django import forms
 from django.contrib.auth import get_user_model
 
+
 @singledispatch
 def a(obj) -> Text:
     return str(obj)
+
 
 User = get_user_model()
 

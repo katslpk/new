@@ -5,5 +5,5 @@ from apps.education.apps import EducationConfig
 app_name = EducationConfig.name
 
 urlpatterns = [
-    path('', IndexView.as_view(), name = "index"),
+    path("", IndexView.as_view(), name="index"),
 ]

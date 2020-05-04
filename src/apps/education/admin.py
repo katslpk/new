@@ -12,5 +12,3 @@ class StationInfoAdminModel(ModelAdmin):
 @admin.register(Work)
 class WorkAdminModel(ModelAdmin):
     pass
-
-

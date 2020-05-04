@@ -13,6 +13,7 @@ from apps.onboarding.models import Profile
 def a(obj) -> Text:
     return str(obj)
 
+
 class AuthProfileAdminForm(forms.ModelForm):
     class Meta:
         model = AuthProfile
