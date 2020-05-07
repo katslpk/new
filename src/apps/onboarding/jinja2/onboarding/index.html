@@ -1,23 +1,24 @@
-{% extends "_base.html" %}
+{% extends "base.html" %}
 
 {% block head %}Onboarding{% endblock %}
 
-{% block main %}
+{% block body %}
 
     <article>
         <h2>Actions</h2>
+        <p>Hello! If you have an account, please, login.</p>
+<div class="bottom-container">
+  <div class="row">
+    <div class="col">
+      <li><a href="{{ url('onboarding:sign_in') }}" class="btn">SignIn</a></li>
 
-        <section>
-            <ul>
-                {% if user.is_authenticated %}
-                    <li><a href="{{ url('onboarding:pwc') }}">Change Password</a></li>
-                    <li><a href="{{ url('onboarding:sign_out') }}">Sign Out</a></li>
-                {% else %}
-                    <li><a href="{{ url('onboarding:sign_in') }}">Sign In</a></li>
-                    <li><a href="{{ url('onboarding:sign_up') }}">Sign Up</a></li>
-                {% endif %}
-            </ul>
-        </section>
+    </div>
+        <p>Or you can create an account right now)</p>
+    <div class="col">
+      <li><a href="{{ url('onboarding:sign_up') }}" class="btn">SignUp</a></li>
+    </div>
+  </div>
+</div>
 
     </article>
 

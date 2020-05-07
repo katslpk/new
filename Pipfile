@@ -19,3 +19,6 @@ dynaconf = {extras = ["yaml"],version = "*"}
 psycopg2-binary = "*"
 jinja2 = "*"
 delorean = "*"
+djangorestframework = "*"
+celery = {extras = ["redis"],version = "*"}
+sentry-sdk = "*"

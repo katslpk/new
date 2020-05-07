@@ -5,6 +5,8 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse_lazy
 
+from project.utils.xdatetime import utcnow
+
 User = get_user_model()
 
 
@@ -16,6 +18,11 @@ class AuthProfile(models.Model):
     site = models.ForeignKey(
         Site, null=True, blank=True, on_delete=models.CASCADE, db_index=True
     )
+
+    @property
+    def is_verified(self) -> bool:
+        cond = self.verified_at and self.verified_at <= utcnow()
+        return cond
 
     @property
     def link(self) -> Optional[str]:

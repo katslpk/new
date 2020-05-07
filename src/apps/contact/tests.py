@@ -1,25 +1,14 @@
-from unittest import skip
-
-from django.test import Client
 from django.test import TestCase
 
 from apps.contact.views import IndexView
+from project.utils.xtests import TemplateResponseTestMixin
 
 
-@skip
-class Test(TestCase):
-    def setUp(self) -> None:
-        self.cli = Client()
-
+class Test(TestCase, TemplateResponseTestMixin):
     def test_get(self):
-        resp = self.cli.get("/contact/")
-        self.assertEqual(resp.status_code, 200)
-        self.assertEqual(len(resp.templates), 2)
-        self.assertEqual(
-            [_t.name for _t in resp.templates], ["contact/index.html", "base.html"]
+        self.validate_response(
+            url="/contact/",
+            expected_view_name="contact:index",
+            expected_view=IndexView,
+            expected_template="contact/index.html",
         )
-        self.assertEqual(
-            resp.resolver_match.func.__name__, IndexView.as_view().__name__
-        )
-        self.assertTrue(resp.has_header("Cache-Control"))
-        self.assertEqual(resp.get("Cache-Control"), f"max-age={60 * 60 * 24}")
