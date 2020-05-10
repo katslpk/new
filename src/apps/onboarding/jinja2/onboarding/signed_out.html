@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block head %}Signed Out{% endblock %}
+
+{% block body %}
+
+    <p>You have been logged out.</p>
+    <p><a href="{{ url("onboarding:sign_in") }}">Sign In</a></p>
+    <p><a href="{{ url("onboarding:sign_up") }}">Sign Up</a></p>
+
+{% endblock %}
