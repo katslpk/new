@@ -11,8 +11,5 @@ from django.conf import settings
 from django.http import HttpRequest
 
 
-
 def utcnow() -> datetime:
     return Delorean().datetime
-
-
