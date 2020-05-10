@@ -12,10 +12,10 @@ User = get_user_model()
 
 class ProfileEditView(FormView):
     form_class = ProfileEditForm
-    template_name = "onboarding/main_edit.html"
+    template_name = "onboarding/me_edit.html"
 
     def get_success_url(self):
-        success_url = reverse_lazy("onboarding:main")
+        success_url = reverse_lazy("onboarding:me")
         return success_url
 
     def form_valid(self, form):

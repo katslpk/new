@@ -12,6 +12,6 @@ class SignInVerifiedView(RedirectView):
         if not verified:
             url = reverse_lazy("onboarding:sign_in")
         else:
-            url = reverse_lazy("about:index") + "?newbie=1"
+            url = reverse_lazy("onboarding:me") + "?newbie=1"
 
         return url

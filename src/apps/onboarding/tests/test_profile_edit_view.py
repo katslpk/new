@@ -1,11 +1,10 @@
 import contextlib
-from unittest import skip
 
 from django.test import Client
 from django.test import TestCase
 
-from apps.onboarding.views.main_edit import ProfileEditView
-from apps.onboarding.views.main import ProfileView
+from apps.onboarding.views import ProfileEditView
+from apps.onboarding.views import ProfileView
 from project.utils.xtests import TemplateResponseTestMixin
 from project.utils.xtests import UserTestMixin
 
@@ -13,10 +12,10 @@ from project.utils.xtests import UserTestMixin
 class Test(TestCase, TemplateResponseTestMixin, UserTestMixin):
     def test_get_anonymous(self):
         self.validate_response(
-            url="/o/main/edit/",
-            expected_view_name="onboarding:main_edit",
+            url="/o/me/edit/",
+            expected_view_name="onboarding:me_edit",
             expected_view=ProfileEditView,
-            expected_template="onboarding/main_edit.html",
+            expected_template="onboarding/me_edit.html",
             content_filters=(lambda _c: b"not authorized" in _c,),
         )
 
@@ -27,10 +26,10 @@ class Test(TestCase, TemplateResponseTestMixin, UserTestMixin):
 
         self.validate_response(
             client=client,
-            url="/o/main/edit/",
-            expected_view_name="onboarding:main_edit",
+            url="/o/me/edit/",
+            expected_view_name="onboarding:me_edit",
             expected_view=ProfileEditView,
-            expected_template="onboarding/main_edit.html",
+            expected_template="onboarding/me_edit.html",
             content_filters=(
                 lambda _c: b"not authorized" not in _c,
                 lambda _c: user.username.encode() in _c,
@@ -61,12 +60,12 @@ class Test(TestCase, TemplateResponseTestMixin, UserTestMixin):
 
         self.validate_response(
             client=client,
-            url="/o/main/edit/",
+            url="/o/me/edit/",
             method="post",
             form_data={"username": new_username, "name": new_name},
-            expected_view_name="onboarding:main",
+            expected_view_name="onboarding:me",
             expected_view=ProfileView,
-            expected_template="onboarding/main.html",
+            expected_template="onboarding/me.html",
             content_filters=(
                 lambda _c: b"not authorized" not in _c,
                 lambda _c: new_name.encode() in _c,

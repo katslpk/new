@@ -1,15 +1,13 @@
-from unittest import skip
-
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-#from apps.onboarding.views import SignUpConfirmedView
-#from apps.onboarding.views import SignUpView
+from apps.onboarding.views import SignUpConfirmedView
+from apps.onboarding.views import SignUpView
 from project.utils.xtests import TemplateResponseTestMixin
 
 User = get_user_model()
 
-@skip
+
 class Test(TestCase, TemplateResponseTestMixin):
     def test_sign_up_get(self):
         self.validate_response(

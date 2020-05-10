@@ -5,6 +5,7 @@ from project.utils.xtests import TemplateResponseTestMixin
 
 
 class Test(TestCase, TemplateResponseTestMixin):
+
     def test_get(self):
         self.validate_response(
             url="/",

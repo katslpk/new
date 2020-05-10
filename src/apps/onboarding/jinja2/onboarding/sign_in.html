@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Sign In{% endblock %}
+{% block head %}Sign In{% endblock %}
 
 {% block body %}
 
@@ -39,10 +39,7 @@
             <button type="submit" class="button">Sign In</button>
             <input name="next" type="hidden" value="{{ next }}">
         </form>
-        <p>Forgot your password?</p>
-         <div class="col">
-      <li><a href="#" class="btn">Change!!</a></li>
-    </div>
+
     </article>
 
 {% endblock %}

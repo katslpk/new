@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from apps.onboarding.views.main import ProfileView
-from apps.onboarding.views.sign_in import SignInView
+from apps.onboarding.views import SignInView
+from apps.onboarding.views.profile import ProfileView
 from project.utils.xtests import TemplateResponseTestMixin
 from project.utils.xtests import UserTestMixin
 
@@ -35,10 +35,10 @@ class Test(TestCase, TemplateResponseTestMixin, UserTestMixin):
             url=f"/o/sign_in/",
             method="post",
             form_data=form_data,
-            expected_view_name="onboarding:main",
-            expected_template="onboarding/main.html",
+            expected_view_name="onboarding:me",
+            expected_template="onboarding/me.html",
             expected_view=ProfileView,
-            expected_redirect_chain=[("/o/main/", 302)],
+            expected_redirect_chain=[("/o/me/", 302)],
             content_filters=(
                 lambda _c: b"error" not in _c,
                 lambda _c: b"Error" not in _c,
@@ -69,14 +69,14 @@ class Test(TestCase, TemplateResponseTestMixin, UserTestMixin):
 
         self.validate_response(
             url=f"/o/sign_in/{user.username}/",
-            expected_view_name="onboarding:main",
-            expected_template="onboarding/main.html",
+            expected_view_name="onboarding:me",
+            expected_template="onboarding/me.html",
             expected_view=ProfileView,
             content_filters=(
                 lambda _c: b"error" not in _c,
                 lambda _c: b"Error" not in _c,
             ),
-            expected_redirect_chain=[("/o/main/?newbie=1", 302)],
+            expected_redirect_chain=[("/o/me/?newbie=1", 302)],
         )
 
     def test_signin_verified_failure_bad_code(self):

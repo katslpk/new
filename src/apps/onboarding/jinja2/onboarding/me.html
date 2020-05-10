@@ -1,9 +1,8 @@
-{% extends "base.html" %}
+{% extends "anon.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block head %}Profile{% endblock %}
 
-
-{% block body %}
+{% block body_allowed %}
 
     <article>
 
@@ -26,7 +25,7 @@
         </div>
 
         <p>
-            <a href="#">
+            <a href="{{ url('onboarding:me_edit') }}">
                 <button class="button">Edit profile</button>
             </a>
         </p>

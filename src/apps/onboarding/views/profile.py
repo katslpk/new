@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class ProfileView(TemplateView):
-    template_name = "onboarding/main.html"
+    template_name = "onboarding/me.html"
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
