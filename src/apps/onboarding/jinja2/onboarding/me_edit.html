@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head %}Edit Profile{% endblock %}
+
+{% block body %}
+
+    <article>
+
+        {% if user.is_anonymous %}
+
+            <h2>You are not authorized to use this</h2>
+
+        {% else %}
+
+            <h2>Your new data</h2>
+
+            <form method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <div class="grid">
+                    {{ form.as_p() }}
+                </div>
+                <button class="button" type="submit">Update</button>
+            </form>
+
+        {% endif %}
+
+    </article>
+
+{% endblock %}

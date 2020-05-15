@@ -1,9 +1,8 @@
-
-{% extends "_base.html" %}
+{% extends "base.html" %}
 
 {% block head %}Password Changed{% endblock %}
 
-{% block main %}
+{% block body %}
 
     <p>Password just has been successfully changed.</p>
     <p><a href="{{ url('onboarding:sign_out') }}">Re-enter and check</a></p>

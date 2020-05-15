@@ -1,8 +1,8 @@
-{% extends "_base.html" %}
+{% extends "base.html" %}
 
 {% block head %}Change Password{% endblock %}
 
-{% block main %}
+{% block body %}
     <article>
         {% if form.errors %}
             <p>Errors during changing password: {{ form.errors }}</p>

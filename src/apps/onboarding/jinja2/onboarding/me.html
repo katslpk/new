@@ -1,0 +1,35 @@
+{% extends "anon.html" %}
+
+{% block head %}Profile{% endblock %}
+
+{% block body_allowed %}
+
+    <article>
+
+        <h2>It's you!</h2>
+
+        {% if newbie_alert %}
+            <p><strong>{{ newbie_alert }}</strong></p>
+        {% endif %}
+
+        <div class="grid">
+            <p class="header">Login name:</p>
+            <p>{{ user.username }}</p>
+
+            <p class="header">E-mail:</p>
+            <p>{{ user.email }}</p>
+
+            <p class="header">Display name:</p>
+            <p>{{ profile.name }}</p>
+
+        </div>
+
+        <p>
+            <a href="{{ url('onboarding:me_edit') }}">
+                <button class="button">Edit profile</button>
+            </a>
+        </p>
+
+    </article>
+
+{% endblock %}

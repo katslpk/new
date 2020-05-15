@@ -1,4 +1,4 @@
-HERE := $(shell pwd)
+HERE := .
 VENV := $(shell pipenv --venv)
 PYTHONPATH := ${HERE}/src
 TEST_PARAMS := --verbosity 2 --pythonpath "${PYTHONPATH}"

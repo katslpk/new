@@ -1,14 +1,14 @@
 from django.test import TestCase
 
-from apps.contact.views import IndexView
+from apps.education.views import IndexView
 from project.utils.xtests import TemplateResponseTestMixin
 
 
 class Test(TestCase, TemplateResponseTestMixin):
     def test_get(self):
         self.validate_response(
-            url="/contact/",
-            expected_view_name="contact:index",
+            url="/education/",
             expected_view=IndexView,
-            expected_template="contact/index.html",
+            expected_view_name="education:index",
+            expected_template="education/index.html",
         )
