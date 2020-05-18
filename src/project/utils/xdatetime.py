@@ -2,13 +2,10 @@ from datetime import date
 from datetime import datetime
 from typing import NamedTuple
 from typing import Optional
-from typing import Union
 
-import pytz
 import requests
 from delorean import Delorean
 from django.conf import settings
-from django.http import HttpRequest
 
 from project.utils.safeguards import safe
 
@@ -25,23 +22,6 @@ def now(timezone: Optional[str] = None) -> datetime:
 def near(dt1: datetime, dt2: datetime, interval=0):
     delta = abs(dt1 - dt2)
     return delta.total_seconds() <= interval
-
-
-def get_user_hour(request: HttpRequest) -> int:
-    atm = now()
-    hour = atm.hour
-
-    if tz := get_user_tz(request):
-        hour = Delorean(atm).shift(str(tz)).datetime.hour
-
-    return hour
-
-
-def get_user_tz(request: HttpRequest) -> Union[pytz.BaseTzInfo, None]:
-    ip = get_client_ip(request)[0]
-    if not (tz_name := retrieve_tz(ip)):
-        return None
-    return pytz.timezone(tz_name)
 
 
 @safe
