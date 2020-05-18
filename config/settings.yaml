@@ -39,6 +39,7 @@ heroku:
   MODE_CACHING: 1
   MODE_DEBUG: 0
   MODE_PROFILING: 0
+  SITE_ID: 1
 
 test:
   EMAIL_FROM: "test@test.name"
