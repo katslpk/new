@@ -15,5 +15,6 @@ def setup_periodic_tasks(sender, **_kwargs):
     sender.add_periodic_task(
         settings.CELERY_BEAT_INVITATION,
         tasks.invite_all_users.s(),  # отложенный запуск задачи
+
         name=tasks.invite_all_users.__name__,
     )
