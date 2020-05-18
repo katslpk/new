@@ -7,7 +7,6 @@ import requests
 from delorean import Delorean
 from django.conf import settings
 
-
 from project.utils.safeguards import safe
 
 
