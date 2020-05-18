@@ -35,6 +35,10 @@ heroku:
     - 127.0.0.1
     - localhost
   DEBUG: true
+  CELERY_BEAT_INVITATION: 900
+  MODE_CACHING: 1
+  MODE_DEBUG: 0
+  MODE_PROFILING: 0
 
 test:
   EMAIL_FROM: "test@test.name"

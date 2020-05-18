@@ -10,6 +10,7 @@ coverage = "*"
 black = "==19.10b0"
 codecov = "*"
 pudb = "*"
+freezegun = "*"
 
 [packages]
 django = "*"
@@ -22,3 +23,4 @@ delorean = "*"
 djangorestframework = "*"
 celery = {extras = ["redis"],version = "*"}
 sentry-sdk = "*"
+requests = "*"
