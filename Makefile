@@ -31,6 +31,14 @@ format:
 run: static
 	${MANAGE} runserver
 
+.PHONY: beat
+beat:
+	set PYTHONPATH=${PYTHONPATH}
+	${PY} celery worker \
+		--app=periodic.app -B \
+		--config periodic.celeryconfig \
+		--workdir ${HERE}/src \
+		--loglevel=debug
 
 .PHONY: static
 static:
