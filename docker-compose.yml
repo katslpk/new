@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  my-exp-web:
+    build: ./
+    container_name: my-exp-web
+    depends_on:
+      - my-exp-db
+      - my-exp-beat
+    entrypoint: ["docker/run-web.sh"]
+    environment:
+      PORT: 80
+    image: my-exp-web
+    ports:
+      - "8000:80"
+  my-exp-beat:
+    container_name: my-exp-beat
+    depends_on:
+      - my-exp-broker
+      - my-exp-db
+    entrypoint: ["docker/run-beat.sh"]
+    image: my-exp-web
+  my-exp-broker:
+    container_name: my-exp-redis
+    image: redis:latest
+  my-exp-db:
+    container_name: my-exp-db
+    environment:
+      POSTGRES_USER: kate
+      POSTGRES_PASSWORD: kate
+      POSTGRES_DB: my-exp
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    restart: always
+  my-exp-dba:
+    container_name: my-exp-dba
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
