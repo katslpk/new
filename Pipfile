@@ -24,4 +24,6 @@ djangorestframework = "*"
 celery = {extras = ["redis"],version = "*"}
 sentry-sdk = "*"
 requests = "*"
-
+gunicorn = "*"
+uvicorn = "*"
+uvloop = "*"
