@@ -29,6 +29,17 @@ development:
   SECRET_KEY: "1"
   TIME_ZONE: "Europe/Minsk"
 
+docker:
+  CELERY_BEAT_INVITATION: 30
+  CELERY_BROKER_URL: "redis://my-exp-broker"
+  DATABASE_URL: "postgresql://kate:123@my-exp-db:5432/my-exp"
+  MODE_CACHING: 0
+  MODE_DEBUG: 0
+  MODE_PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "Europe/Minsk"
+
 heroku:
   ALLOWED_HOSTS:
     - .katsiaryna.herokuapp.com
