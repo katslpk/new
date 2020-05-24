@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{% block head %} Hi, {{ name }}! {% endblock %}
+{% block head %}
+    from onboarding.models import Profile
+Hi, {{ name }}
+
+ {% endblock %}
 
 {% block body %}
 

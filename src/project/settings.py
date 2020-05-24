@@ -87,9 +87,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 
@@ -111,7 +108,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = REPO_DIR / ".static"
 
-LOGIN_URL = reverse_lazy("onboarding:sign_in")
+LOGIN_URL = reverse_lazy("onboarding:index")
 LOGIN_REDIRECT_URL = reverse_lazy("onboarding:me")
 
 SITE_ID = _settings.SITE_ID
