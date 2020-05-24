@@ -1,9 +1,12 @@
 default:
   ALLOWED_HOSTS: []
+  AWS_ACCESS_KEY_ID: ""
+  AWS_LOCATION: ""
+  AWS_S3_REGION_NAME: ""
+  AWS_SECRET_ACCESS_KEY: ""
   DATABASE_URL: ""
   DEBUG: true
   SECRET_KEY: ""
-  SENTRY_DSN: ""
   SITE_ID: 0
   CELERY_BEAT_INVITATION: -1
   CELERY_BROKER_URL: ""
@@ -20,6 +23,8 @@ default:
   TIME_ZONE: ""
 
 development:
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
   DEBUG: true
   SITE_ID: 1
   CELERY_BEAT_INVITATION: 30
@@ -30,6 +35,8 @@ development:
   TIME_ZONE: "Europe/Minsk"
 
 docker:
+  AWS_LOCATION: "docker"
+  AWS_S3_REGION_NAME: "us-east-1"
   CELERY_BEAT_INVITATION: 30
   CELERY_BROKER_URL: "redis://my-exp-broker"
   DATABASE_URL: "postgresql://kate:123@my-exp-db:5432/my-exp"
@@ -45,6 +52,8 @@ heroku:
     - .katsiaryna.herokuapp.com
     - 127.0.0.1
     - localhost
+  AWS_LOCATION: "heroku"
+  AWS_S3_REGION_NAME: "us-east-1"
   DEBUG: true
   CELERY_BEAT_INVITATION: 900
   MODE_CACHING: 1
