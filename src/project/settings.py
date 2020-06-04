@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "apps.contact",
     "apps.onboarding",
     "apps.blog",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
