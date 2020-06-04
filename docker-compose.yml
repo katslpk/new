@@ -26,7 +26,7 @@ services:
     container_name: my-exp-db
     environment:
       POSTGRES_USER: kate
-      POSTGRES_PASSWORD: kate
+      POSTGRES_PASSWORD: 123
       POSTGRES_DB: my-exp
     image: postgres:latest
     ports:

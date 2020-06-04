@@ -9,4 +9,5 @@ urlpatterns = [
     path("education/", include("apps.education.urls")),
     path("", include("apps.about.urls")),
     path("o/", include("apps.onboarding.urls")),
+    path("blog/", include("apps.blog.urls")),
 ]
