@@ -9,6 +9,5 @@ class WorkViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
     serializer_class = WorkSerializer
 
-
     def get_queryset(self):
         return Work.objects.all()
