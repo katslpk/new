@@ -23,6 +23,8 @@ default:
   TIME_ZONE: ""
 
 development:
+  ALLOWED_HOSTS: ["ba95b199cac8.ngrok.io"]
+  TG: "1157910092:AAGVTzGJA5BR94Xw0-9WtvmJFu9BQ1C_CKQ"
   AWS_LOCATION: "development"
   AWS_S3_REGION_NAME: "us-east-1"
   DEBUG: true

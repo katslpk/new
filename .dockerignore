@@ -13,3 +13,5 @@ README.md
 docker-compose.yml
 runtime.txt
 src/celerybeat-schedule
+**.serverless
+**node_modules
