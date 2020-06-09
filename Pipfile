@@ -11,6 +11,7 @@ black = "==19.10b0"
 codecov = "*"
 pudb = "*"
 freezegun = "*"
+pillow = "*"
 
 [packages]
 django = "*"
