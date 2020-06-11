@@ -5,9 +5,45 @@ Hi, {{ name }}
 {% endblock %}
 
 {% block body %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 <p>This is personal site for your car.</p>
 <p>Please, select your car and add all information </p>
-
+<table>
+  <tr>
+    <th>Car Model</th>
+    <th>Year of issue</th>
+    <th>Engine type</th>
+    <th>Engine volume</th>
+    <th>VIN</th>
+    <th>Car license plate</th>
+    <th>Additional Information</th>
+  </tr>
+  {% for carinfo in object_list %}
+      <tr>
+          <td>{{ carinfo.car_model }}</td>
+          <td>{{ carinfo.car_year }}</td>
+          <td>{{ carinfo.engine_type }}</td>
+          <td>{{ carinfo.engine_volume }}</td>
+          <td>{{ carinfo.vin }}</td>
+          <td>{{ carinfo.car_license_plate }}</td>
+          <td>{{ carinfo.additional_info }}</td>
+      </tr>
+  {% endfor %}
 
 {% endblock %}

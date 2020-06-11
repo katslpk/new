@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.views.generic import TemplateView, ListView
 
-from django.views.generic import TemplateView
-
+from apps.about.models import CarInfo
 from apps.onboarding.models import Profile
 
 class IndexView(LoginRequiredMixin, TemplateView):
@@ -15,4 +15,8 @@ class IndexView(LoginRequiredMixin, TemplateView):
         context['name'] = profile.name
         return context
 
+
+class CarInfoView(LoginRequiredMixin, ListView):
+    template_name = "about/index.html"
+    model = CarInfo
 
