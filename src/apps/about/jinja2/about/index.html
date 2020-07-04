@@ -3,48 +3,18 @@
 {% block head %}{% endblock %}
 
 {% block body %}
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+{% for car in object_list %}
+<br/><div class="nes-container is-rounded">
+    <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>
+</div><br/>
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-<p>This is personal site for your car.</p>
-<p>Please, select your car and add all information </p>
-<table>
-  <tr>
-    <th>Car Model</th>
-    <th>Year of issue</th>
-    <th>Engine type</th>
-    <th>Engine volume</th>
-    <th>VIN</th>
-    <th>Car license plate</th>
-    <th>Additional Information</th>
-  </tr>
-  {% for carinfo in object_list %}
-      <tr>
-          <td>{{ carinfo.car_model }}</td>
-          <td>{{ carinfo.car_year }}</td>
-          <td>{{ carinfo.engine_type }}</td>
-          <td>{{ carinfo.engine_volume }}</td>
-          <td>{{ carinfo.vin }}</td>
-          <td>{{ carinfo.car_license_plate }}</td>
-          <td>{{ carinfo.additional_info }}</td>
-      </tr>
-  {% endfor %}
-    <ul_1>
-        <li><a href="{{ url('about:car_add') }}">Add car</a></li>
-    </ul_1>
+{% endfor %}
+
+        <p>
+            <a href="{{ url('about:car_add') }}">
+                <button class="button">Add new car</button>
+            </a>
+        </p>
 
 {% endblock %}

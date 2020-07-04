@@ -6,4 +6,4 @@ from apps.service.models import Work
 class AddWorkForm(ModelForm):
     class Meta:
         model = Work
-        fields = '__all__'
+        fields = "__all__"
