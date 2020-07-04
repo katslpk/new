@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "apps.about",
-    "apps.education",
+    "apps.service",
     "apps.contact",
     "apps.onboarding",
     "apps.blog",

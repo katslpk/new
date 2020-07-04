@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.education.models import Work
+from apps.service.models import Work
 
 
 class WorkSerializer(serializers.ModelSerializer):

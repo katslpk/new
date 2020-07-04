@@ -2,7 +2,7 @@ from unittest import skip
 
 from django.test import TestCase
 
-from apps.education.views import IndexView
+from apps.service.views import IndexView
 from project.utils.xtests import TemplateResponseTestMixin
 
 
@@ -10,8 +10,8 @@ from project.utils.xtests import TemplateResponseTestMixin
 class Test(TestCase, TemplateResponseTestMixin):
     def test_get(self):
         self.validate_response(
-            url="/education/",
+            url="/service/",
             expected_view=IndexView,
-            # expected_view_name="education:index",
-            expected_template="education/index.html",
+            # expected_view_name="service:index",
+            expected_template="service/index.html",
         )
