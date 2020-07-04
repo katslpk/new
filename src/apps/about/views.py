@@ -6,10 +6,8 @@ from django.views.generic import ListView
 
 from apps.about.form import NewCarAddForm
 from apps.about.models import CarInfo
-from apps.onboarding.models import Profile
 
 User = get_user_model()
-
 
 class CarInfoView(LoginRequiredMixin, ListView):
     template_name = "about/index.html"
@@ -24,11 +22,17 @@ class CarInfoView(LoginRequiredMixin, ListView):
 class CarAdd(LoginRequiredMixin, CreateView):
     form_class = NewCarAddForm
     template_name = "about/car_add.html"
+    model = CarInfo
 
     def get_success_url(self):
         url = reverse_lazy("about:index")
         return url
 
-    # def form_valid(self, form):
-    #     form.instance.user = User.objects.get(user=self.request.username)
-    #     return super(CarAdd, self).form_valid(form)
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            ctx["form"] = NewCarAddForm(
+                initial={"user": self.request.user}
+            )
+
+        return ctx
