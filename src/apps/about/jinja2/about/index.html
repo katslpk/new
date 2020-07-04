@@ -45,13 +45,8 @@ tr:nth-child(even) {
           <td>{{ carinfo.additional_info }}</td>
       </tr>
   {% endfor %}
-        {% if not user.is_authenticated %}
-            <a href="{{ url('onboarding:index') }}">Sign in</a>
-        {% else %}
-            <form action="{{ url('about:index') }}" method="post">
-                {{ form.as_p() }}
-                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                <button type="submit">Add car</button>
-            </form>
-        {% endif %}
+    <ul_1>
+        <li><a href="{{ url('about:car_add') }}">Add car</a></li>
+    </ul_1>
+
 {% endblock %}

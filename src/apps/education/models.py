@@ -16,4 +16,3 @@ class Work(models.Model):
     comment = models.TextField(null=True, blank=True)
     cost = models.FloatField(null=True, blank=True)
     station = models.ManyToManyField(Station, related_name="work")
-

@@ -1,8 +1,8 @@
 from django.urls import path
+from django.views.decorators.csrf import csrf_exempt
 
 from apps.education.apps import EducationConfig
 from apps.education.views import IndexView
-from django.views.decorators.csrf import csrf_exempt
 
 app_name = EducationConfig.name
 
