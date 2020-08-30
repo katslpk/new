@@ -11,7 +11,7 @@
 
 {% for car in object_list %}
 <ul_1>
-    <li><a href="{{ url('service:work') }}">{{ car.car_model }}</li>
+    <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>
 </ul_1>
 {% endfor %}
 

@@ -22,7 +22,6 @@ class Station(models.Model):
 
 
 class Work(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
     car_model = models.ForeignKey(CarInfo, on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
     mileage = models.TextField(null=True, blank=True)
