@@ -12,3 +12,5 @@ class NewCarAddForm(ModelForm):
         model = CarInfo
         widgets = {"user": forms.HiddenInput}
         fields = "__all__"
+
+

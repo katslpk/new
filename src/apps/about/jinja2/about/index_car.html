@@ -3,6 +3,7 @@
 {% block head %}{% endblock %}
 
 {% block body %}
+
 <style>
 table {
     font-family: arial, sans-serif;
@@ -21,6 +22,7 @@ tr:nth-child(even) {
 }
 </style>
 
+<p>
 <table>
   <tr>
     <th>Car Model</th>
@@ -40,6 +42,26 @@ tr:nth-child(even) {
           <td>{{ object.car_license_plate }}</td>
           <td>{{ object.additional_info }}</td>
       </tr>
+</p>
+
+<p>
+    Please, add your car image!!!
+    <form method="post">
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <div class="grid">
+            {{ form.as_p() }}
+        </div>
+    <button class="button" type="submit">Add</button>
+    </form>
+
+</p>
+{% for photo in object.img.all() %}
+    <a href="{{ photo.original.url }}">
+        <img src="{{ photo.original.url }}"
+        alt="{{ photo.pk }}"
+        style="max-width:200px; height: auto" >
+    </a>
+{%  endfor %}
 
         <p>
             <a href="{{ url("about:index_delete", kwargs={"pk": object.pk}) }}">

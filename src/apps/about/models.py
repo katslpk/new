@@ -1,6 +1,9 @@
+import uuid
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse_lazy
+from storages.backends.s3boto3 import S3Boto3Storage
 
 User = get_user_model()
 
@@ -19,3 +22,8 @@ class CarInfo(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy("about:index_car", kwargs={"pk": str(self.pk)})
+
+class CarPhoto(models.Model):
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    car = models.ForeignKey(CarInfo, on_delete=models.CASCADE, related_name="img")
+    original = models.FileField(storage=S3Boto3Storage())
