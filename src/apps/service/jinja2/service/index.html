@@ -3,52 +3,17 @@
 
 {% block body %}
 
-<h1>Your personal service book</h1>
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
+<h1> This is your personal service book</h1>
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
+<p>
+    Please, select your car and add all information about service works.
+</p>
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Mileage</th>
-    <th>Type of work</th>
-    <th>Cost, BYN</th>
-    <th>Service station</th>
-    <th>Comment</th>
-  </tr>
-  {% for work in object_list %}
-      <tr>
-          <td>{{ work.date }}</td>
-          <td>{{ work.mileage }}</td>
-          <td>{{ work.type }}</td>
-          <td>{{ work.cost }}</td>
-            {% if work.station %}
-                {% for station in work.station.all() %}
-                <td>{{ station.name}}</td>
-                {% endfor %}
-            {% endif %}
-          <td>{{ work.comment }}</td>
-      </tr>
-  {% endfor %}
-
-</table>
-    <ul_1>
-        <li><a href="{{ url('service:add_work') }}">Add work</a></li>
-    </ul_1>
+{% for car in object_list %}
+<ul_1>
+    <li><a href="{{ url('service:work') }}">{{ car.car_model }}</li>
+</ul_1>
+{% endfor %}
 
 {% endblock %}
 

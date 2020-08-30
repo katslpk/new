@@ -4,6 +4,12 @@
 
 {% block body %}
 
+<h1> This is your personal service book</h1>
+
+<p>
+    Please, select your car and add all information about service works.
+</p>
+
 {% for car in object_list %}
 <br/><div class="nes-container is-rounded">
     <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>

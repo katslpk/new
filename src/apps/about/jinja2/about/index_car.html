@@ -44,28 +44,24 @@ tr:nth-child(even) {
       </tr>
 </p>
 
-<p>
-    Please, add your car image!!!
-    <form method="post">
-        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-        <div class="grid">
-            {{ form.as_p() }}
-        </div>
-    <button class="button" type="submit">Add</button>
-    </form>
-
 </p>
-{% for photo in object.img.all() %}
+<!--{% for photo in object.img.all() %}
     <a href="{{ photo.original.url }}">
         <img src="{{ photo.original.url }}"
         alt="{{ photo.pk }}"
         style="max-width:200px; height: auto" >
     </a>
-{%  endfor %}
+{%  endfor %}-->
 
         <p>
             <a href="{{ url("about:index_delete", kwargs={"pk": object.pk}) }}">
                 <button class="button">Delete</button>
+            </a>
+        </p>
+
+        <p>
+            <a href="{{ url("service:work") }}">
+                <button class="button">Go to service book!</button>
             </a>
         </p>
 {% endblock %}

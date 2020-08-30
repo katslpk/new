@@ -25,6 +25,9 @@ class CarInfo(models.Model):
     def get_absolute_url(self):
         return reverse_lazy("about:index_car", kwargs={"pk": str(self.pk)})
 
+    def __str__(self):
+        return f"{self.car_model} ({self.pk})"
+
 
 class CarPhoto(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
