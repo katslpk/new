@@ -10,10 +10,14 @@
 </p>
 
 {% for car in object_list %}
-<ul_1>
-    <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>
-</ul_1>
-{% endfor %}
 
+<br/><div class="nes-container is-rounded">
+    <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>
+</div><br/>
+
+{% endfor %}
+    <ul_1>
+        <li><a href="{{ url("service:add_work") }}">Add work</a></li>
+    </ul_1>
 {% endblock %}
 

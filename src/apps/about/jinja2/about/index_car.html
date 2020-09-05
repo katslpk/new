@@ -45,13 +45,7 @@ tr:nth-child(even) {
 </p>
 
 </p>
-<!--{% for photo in object.img.all() %}
-    <a href="{{ photo.original.url }}">
-        <img src="{{ photo.original.url }}"
-        alt="{{ photo.pk }}"
-        style="max-width:200px; height: auto" >
-    </a>
-{%  endfor %}-->
+
 
         <p>
             <a href="{{ url("about:index_delete", kwargs={"pk": object.pk}) }}">
@@ -60,8 +54,9 @@ tr:nth-child(even) {
         </p>
 
         <p>
-            <a href="{{ url("service:work") }}">
+            <a href="{{ url("service:work", kwargs={"pk": object.pk}) }}">
                 <button class="button">Go to service book!</button>
             </a>
         </p>
+
 {% endblock %}

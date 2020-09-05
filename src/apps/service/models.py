@@ -31,4 +31,7 @@ class Work(models.Model):
     station = models.ForeignKey(Station, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse_lazy("service:work", kwargs={"pk": str(self.pk)})
+        return reverse_lazy("service:index", kwargs={"pk": str(self.pk)})
+
+    def __str__(self):
+        return f"{self.car_model} ({self.pk})"

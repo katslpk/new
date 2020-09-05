@@ -6,7 +6,6 @@ from apps.about.views import ALLCarInfoView
 from apps.about.views import CarAdd
 from apps.about.views import CarInfoDelete
 from apps.about.views import CarInfoView
-from apps.service.views import WorkView
 
 app_name = IndexConfig.name
 
