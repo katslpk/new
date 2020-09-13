@@ -2,7 +2,8 @@ Pipfile.lock
 .idea/
 .static/
 .secrets.*
-**.serverless/
+serverless/node_modules
+serverless/.serverless
 **node_modules/
 
 
