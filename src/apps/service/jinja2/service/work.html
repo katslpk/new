@@ -40,12 +40,10 @@ tr:nth-child(even) {
           <td>{{ work.cost }}</td>
           <td>{{ work.station }}</td>
           <td>{{ work.comment }}</td>
-          <td><a href="delete/{{work.id}}">Delete</a></td>
       </tr>
   {% endfor %}
 
 </table>
-
 
     <ul_1>
         <li><a href="{{ url("service:add_work") }}">Add work</a></li>
