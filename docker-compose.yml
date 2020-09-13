@@ -27,7 +27,7 @@ services:
     environment:
       POSTGRES_USER: kate
       POSTGRES_PASSWORD: 123
-      POSTGRES_DB: my_exp
+      POSTGRES_DB: my-exp
     image: postgres:latest
     ports:
       - "5433:5432"
