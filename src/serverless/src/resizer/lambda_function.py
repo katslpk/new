@@ -33,7 +33,8 @@ def get_files(event: dict):
             continue
 
         yield S3File(
-            bucket=bucket, key=key,
+            bucket=bucket,
+            key=key,
         )
 
 

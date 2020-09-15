@@ -1,7 +1,7 @@
 service: my-exp-car
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.8
   timeout: 60
   versionFunctions: false
   endpointType: REGIONAL
@@ -10,10 +10,14 @@ provider:
       Action:
         - 's3:ListBucket'
       Resource:
-        - 'arn:aws:s3:::my-exp-car/*'
+        - 'arn:aws:s3:::my-exp-car'
     - Effect: 'Allow'
       Action:
+        - 's3:DeleteObject'
+        - 's3:GetObject'
+        - 's3:GetObjectAcl'
         - 's3:PutObject'
+        - 's3:PutObjectAcl'
       Resource:
         - 'arn:aws:s3:::my-exp-car/*'
 functions:
