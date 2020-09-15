@@ -30,10 +30,20 @@ class Migration(migrations.Migration):
                 ("cost", models.FloatField(blank=True, null=True)),
             ],
         ),
-        migrations.RemoveField(model_name="skills", name="degree",),
-        migrations.RenameModel(old_name="Degree", new_name="Station",),
-        migrations.DeleteModel(name="Education",),
-        migrations.DeleteModel(name="Skills",),
+        migrations.RemoveField(
+            model_name="skills",
+            name="degree",
+        ),
+        migrations.RenameModel(
+            old_name="Degree",
+            new_name="Station",
+        ),
+        migrations.DeleteModel(
+            name="Education",
+        ),
+        migrations.DeleteModel(
+            name="Skills",
+        ),
         migrations.AddField(
             model_name="work",
             name="station",

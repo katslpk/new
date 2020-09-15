@@ -45,10 +45,20 @@ class Migration(migrations.Migration):
                 ("summary", models.TextField()),
             ],
         ),
-        migrations.RemoveField(model_name="responsibility", name="project",),
-        migrations.RenameModel(old_name="Technology", new_name="Degree",),
-        migrations.DeleteModel(name="Project",),
-        migrations.DeleteModel(name="Responsibility",),
+        migrations.RemoveField(
+            model_name="responsibility",
+            name="project",
+        ),
+        migrations.RenameModel(
+            old_name="Technology",
+            new_name="Degree",
+        ),
+        migrations.DeleteModel(
+            name="Project",
+        ),
+        migrations.DeleteModel(
+            name="Responsibility",
+        ),
         migrations.AddField(
             model_name="skills",
             name="degree",

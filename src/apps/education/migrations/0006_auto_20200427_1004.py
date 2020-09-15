@@ -12,7 +12,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="skills", name="name",),
+        migrations.RemoveField(
+            model_name="skills",
+            name="name",
+        ),
         migrations.AlterField(
             model_name="skills",
             name="degree",
