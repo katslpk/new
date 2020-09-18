@@ -13,7 +13,7 @@ SECRET_KEY = _settings.SECRET_KEY
 
 DEBUG = _settings.DEBUG
 
-ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
+ALLOWED_HOSTS = _settings.ALLOWED_HOSTS + ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,8 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "apps.about",
-    "apps.education",
-    "apps.contact",
+    "apps.service",
+    "apps.statistic",
     "apps.onboarding",
     "apps.blog",
     "rest_framework",

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<p>
+<table>
+  <tr>
+    <th>Car Model</th>
+    <th>Year of issue</th>
+    <th>Engine type</th>
+    <th>Engine volume</th>
+    <th>VIN</th>
+    <th>Car license plate</th>
+    <th>Additional Information</th>
+  </tr>
+      <tr>
+          <td>{{ object.car_model }}</td>
+          <td>{{ object.car_year }}</td>
+          <td>{{ object.engine_type }}</td>
+          <td>{{ object.engine_volume }}</td>
+          <td>{{ object.vin }}</td>
+          <td>{{ object.car_license_plate }}</td>
+          <td>{{ object.additional_info }}</td>
+      </tr>
+</p>
+
+</p>
+
+
+        <p>
+            <a href="{{ url("about:index_delete", kwargs={"pk": object.pk}) }}">
+                <button class="button">Delete</button>
+            </a>
+        </p>
+
+        <p>
+            <a href="{{ url("service:work", kwargs={"pk": object.pk}) }}">
+                <button class="button">Go to service book!</button>
+            </a>
+        </p>
+
+{% endblock %}
