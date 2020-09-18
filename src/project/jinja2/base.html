@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My expensive car</title>
+    <title>My expensive car</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <div class="header">
-  <h2>{% block head %} {% endblock %}</h2>
+    <h2>{% block head %} {% endblock %}</h2>
 </div>
 
 <body>
 
 <ul>
-  <link href="{{ static ('head.css') }}" rel="stylesheet" type="text/css">
-  <li><a class="{% if ns == 'about' %}active{% endif %}" href="{{ url('about:index') }}">Cars Info</a></li>
-  <li><a class="{% if ns == 'service' %}active{% endif %}" href="{{ url ('service:index') }}">Service book</a></li>
-  <li><a class="{% if ns == 'contact' %}active{% endif %}" href="{{ url ('contact:index') }}">Contact</a></li>
-  </ul>
-  <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+    <link href="{{ static ('head.css') }}" rel="stylesheet" type="text/css">
+    <li><a class="{% if ns == 'about' %}active{% endif %}" href="{{ url('about:index') }}">Cars Info</a></li>
+    <li><a class="{% if ns == 'service' %}active{% endif %}" href="{{ url ('service:index') }}">Service book</a></li>
+    <li><a class="{% if ns == 'statistic' %}active{% endif %}" href="{{ url ('statistic:index') }}">Contact</a></li>
+</ul>
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
 
-  {% block body %} {% endblock %}
-
+    {% block body %} {% endblock %}
+</div>
 </body>
 </html>
