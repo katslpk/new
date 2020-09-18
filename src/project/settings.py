@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "apps.about",
     "apps.service",
-    "apps.contact",
+    "apps.statistic",
     "apps.onboarding",
     "apps.blog",
     "rest_framework",

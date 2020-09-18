@@ -3,4 +3,4 @@ from django.views.generic import TemplateView
 
 
 class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = "contact/index.html"
+    template_name = "statistic/index.html"
