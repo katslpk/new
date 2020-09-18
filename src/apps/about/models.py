@@ -11,6 +11,9 @@ User = get_user_model()
 class EngineType(models.Model):
     name = models.TextField(unique=True)
 
+    def __str__(self):
+        return f"{self.name}"
+
 
 class CarInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
