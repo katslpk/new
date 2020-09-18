@@ -8,18 +8,19 @@ from storages.backends.s3boto3 import S3Boto3Storage
 User = get_user_model()
 
 
+class EngineType(models.Model):
+    name = models.TextField(unique=True)
+
+
 class CarInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    car_model = models.TextField(null=True, blank=True)
-    car_year = models.DecimalField(
-        null=True, blank=True, max_digits=4, decimal_places=0
-    )
-    engine_volume = models.DecimalField(
-        max_digits=2, decimal_places=1, null=True, blank=True
-    )
-    engine_type = models.TextField(null=True, blank=True)
-    vin = models.TextField(max_length=17, null=True, blank=True)
-    car_license_plate = models.TextField(null=True, blank=True)
+    car_model = models.TextField()
+    car_year = models.DecimalField(max_digits=4, decimal_places=0)
+    start_mileage = models.DecimalField(max_digits=8, decimal_places=0)
+    engine_volume = models.DecimalField(max_digits=2, decimal_places=1,)
+    engine_type = models.ForeignKey(EngineType, on_delete=models.CASCADE)
+    vin = models.TextField(unique=True, max_length=17)
+    car_license_plate = models.TextField(unique=True)
     additional_info = models.TextField(null=True, blank=True)
 
     def get_absolute_url(self):
