@@ -44,6 +44,5 @@ class Test(TestCase):
         self.assertTrue(auth.link)
 
         self.assertEqual(
-            str(auth),
-            f"AuthProfile #{auth.pk} for {placeholder!r}",
+            str(auth), f"AuthProfile #{auth.pk} for {placeholder!r}",
         )

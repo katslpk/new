@@ -49,9 +49,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [
-            PROJECT_DIR / "jinja2",
-        ],
+        "DIRS": [PROJECT_DIR / "jinja2",],
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "project.utils.jinja2env.build_jinja2_environment",
