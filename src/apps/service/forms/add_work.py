@@ -1,5 +1,5 @@
+from django import forms
 from django.forms import ModelForm
-from django.forms import forms
 
 from apps.service.models import Work
 
