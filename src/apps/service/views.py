@@ -61,14 +61,6 @@ class AddWorkView(LoginRequiredMixin, CreateView):
 
         return TaskForm
 
-    def form_valid_mileage(self, form):
-        form.clean_mileage()
-        return super().form_valid(form)
-
-    def form_valid_cost(self, form):
-        form.clean_cost()
-        return super().form_valid(form)
-
     def get_success_url(self):
         url = reverse_lazy("service:index")
         return url
@@ -102,10 +94,6 @@ class StationAdd(LoginRequiredMixin, CreateView):
             ctx["form"] = StationAddForm(initial={"user": self.request.user})
 
         return ctx
-
-    def get_queryset(self):
-        own_station = Station.objects.filter(user_id=self.request.user)
-        return own_station
 
     def get_success_url(self):
         url = reverse_lazy("service:add_work")
