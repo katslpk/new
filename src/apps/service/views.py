@@ -61,6 +61,14 @@ class AddWorkView(LoginRequiredMixin, CreateView):
 
         return TaskForm
 
+    def form_valid_mileage(self, form):
+        form.clean_mileage()
+        return super().form_valid(form)
+
+    def form_valid_cost(self, form):
+        form.clean_cost()
+        return super().form_valid(form)
+
     def get_success_url(self):
         url = reverse_lazy("service:index")
         return url
@@ -71,6 +79,25 @@ class TypeAdd(LoginRequiredMixin, CreateView):
     model = Type
     form_class = TypeAddForm
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            ctx["form"] = TypeAddForm(initial={"user": self.request.user})
+
+        return ctx
+
+    def get_form_class(self) -> type:
+        own_type = Type.objects.filter(user_id=self.request.user)
+
+        class TaskForm(forms.ModelForm):
+            type = models.ModelChoiceField(queryset=own_type)
+
+            class Meta:
+                model = Work
+                fields = "__all__"
+
+        return TaskForm
+
     def get_success_url(self):
         url = reverse_lazy("service:add_work")
         return url
@@ -80,6 +107,17 @@ class StationAdd(LoginRequiredMixin, CreateView):
     template_name = "service/add_station.html"
     model = Station
     form_class = StationAddForm
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            ctx["form"] = StationAddForm(initial={"user": self.request.user})
+
+        return ctx
+
+    def get_queryset(self):
+        own_station = Station.objects.filter(user_id=self.request.user)
+        return own_station
 
     def get_success_url(self):
         url = reverse_lazy("service:add_work")

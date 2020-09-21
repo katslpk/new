@@ -5,10 +5,10 @@ from django.views.generic import CreateView
 from django.views.generic import DeleteView
 from django.views.generic import DetailView
 from django.views.generic import ListView
-from django.views.generic import UpdateView
 
 from apps.about.form import NewCarAddForm
 from apps.about.models import CarInfo
+
 
 User = get_user_model()
 
@@ -32,6 +32,11 @@ class CarAdd(LoginRequiredMixin, CreateView):
     form_class = NewCarAddForm
     template_name = "about/car_add.html"
     model = CarInfo
+
+    def form_valid(self, form):
+        form.clean_start_mileage()
+        return super().form_valid(form)
+
 
     def get_success_url(self):
         url = reverse_lazy("about:index")

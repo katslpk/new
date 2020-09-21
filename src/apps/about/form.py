@@ -12,3 +12,11 @@ class NewCarAddForm(ModelForm):
         model = CarInfo
         widgets = {"user": forms.HiddenInput}
         fields = "__all__"
+
+    def clean_start_mileage(self):
+
+        cleaned = self.cleaned_data["start_mileage"]
+
+        if cleaned < 0:
+            raise forms.ValidationError("Mileage cannot be negative")
+        return cleaned

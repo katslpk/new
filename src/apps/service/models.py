@@ -9,6 +9,7 @@ User = get_user_model()
 
 class Type(models.Model):
     type = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.type}"
@@ -16,6 +17,7 @@ class Type(models.Model):
 
 class Station(models.Model):
     station = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.station}"

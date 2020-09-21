@@ -16,8 +16,11 @@
 </div><br/>
 
 {% endfor %}
-    <ul_1>
-        <li><a href="{{ url("service:add_work") }}">Add work</a></li>
-    </ul_1>
+        <p>
+            <a href="{{ url('service:add_work') }}">
+                <button class="button">Add new car</button>
+            </a>
+        </p>
+
 {% endblock %}
 
