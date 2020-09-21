@@ -37,7 +37,6 @@ class CarAdd(LoginRequiredMixin, CreateView):
         form.clean_start_mileage()
         return super().form_valid(form)
 
-
     def get_success_url(self):
         url = reverse_lazy("about:index")
         return url

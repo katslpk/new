@@ -86,18 +86,6 @@ class TypeAdd(LoginRequiredMixin, CreateView):
 
         return ctx
 
-    def get_form_class(self) -> type:
-        own_type = Type.objects.filter(user_id=self.request.user)
-
-        class TaskForm(forms.ModelForm):
-            type = models.ModelChoiceField(queryset=own_type)
-
-            class Meta:
-                model = Work
-                fields = "__all__"
-
-        return TaskForm
-
     def get_success_url(self):
         url = reverse_lazy("service:add_work")
         return url
