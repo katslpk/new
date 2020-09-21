@@ -9,7 +9,6 @@ from django.views.generic import ListView
 from apps.about.form import NewCarAddForm
 from apps.about.models import CarInfo
 
-
 User = get_user_model()
 
 
