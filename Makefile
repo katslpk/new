@@ -1,6 +1,11 @@
 HERE := .
+
+DIR_SOURCES_PROJECT := ${HERE}/src
+DIR_SERVERLESS := ${HERE}/serverless
+DIR_SOURCES_SERVERLESS := ${DIR_SERVERLESS}/src
+
 VENV := $(shell pipenv --venv)
-PYTHONPATH := ${HERE}/src
+PYTHONPATH := ${DIR_SOURCES_PROJECT}
 TEST_PARAMS := --verbosity 2 --pythonpath "${PYTHONPATH}"
 PSQL_PARAMS := --host=localhost --username=kate --password
 
@@ -11,7 +16,7 @@ endif
 
 ifeq ($(ENV_FOR_DYNACONF), travis)
 	RUN :=
-	TEST_PARAMS := --failfast --keepdb --verbosity 1 --pythonpath ${PYTHONPATH}
+	TEST_PARAMS := --failfast --keepdb --verbosity 1 --pythonpath "${PYTHONPATH}"
 	PSQL_PARAMS := --host=localhost --username=postgres --no-password
 else ifeq ($(ENV_FOR_DYNACONF), heroku)
 	RUN :=
@@ -23,8 +28,10 @@ MANAGE := ${RUN} python src/manage.py
 
 .PHONY: format
 format:
-	${RUN} isort --virtual-env ${VENV} --recursive --apply ${HERE}
-	${RUN} black ${HERE}
+	${RUN} isort --virtual-env "${VENV}" "${DIR_SOURCES_PROJECT}"
+	${RUN} isort --virtual-env "${VENV}" "${DIR_SOURCES_SERVERLESS}"
+	${RUN} black "${DIR_SOURCES_PROJECT}"
+	${RUN} black "${DIR_SOURCES_SERVERLESS}"
 
 
 .PHONY: run
@@ -34,11 +41,11 @@ run: static
 
 .PHONY: beat
 beat:
-	PYTHONPATH=${PYTHONPATH} \
+	PYTHONPATH="${PYTHONPATH}" \
 	${RUN} celery worker \
 		--app periodic.app -B \
 		--config periodic.celeryconfig \
-		--workdir ${HERE}/src \
+		--workdir "${DIR_SOURCES_PROJECT}" \
 		--loglevel=info
 
 
@@ -87,13 +94,15 @@ test:
 			project \
 
 	${RUN} coverage report
-	${RUN} isort --virtual-env ${VENV} --recursive --check-only ${HERE}
-	${RUN} black --check ${HERE}
+	${RUN} isort --virtual-env "${VENV}" --check-only "${DIR_SOURCES_PROJECT}"
+	${RUN} isort --virtual-env "${VENV}" --check-only "${DIR_SOURCES_SERVERLESS}"
+	${RUN} black --check "${DIR_SOURCES_PROJECT}"
+	${RUN} black --check "${DIR_SOURCES_SERVERLESS}"
 
 
 .PHONY: report
 report:
-	${RUN} coverage html --directory=${HERE}/htmlcov --fail-under=0
+	${RUN} coverage html --directory="${HERE}/htmlcov" --fail-under=0
 	open "${HERE}/htmlcov/index.html"
 
 
@@ -127,7 +136,7 @@ resetdb:
 	psql ${PSQL_PARAMS} \
 		--dbname=postgres \
 		--echo-all \
-		--file=${HERE}/ddl/reset_db.sql \
+		--file="${HERE}/ddl/reset_db.sql" \
 		--no-psqlrc \
 		--no-readline \
 

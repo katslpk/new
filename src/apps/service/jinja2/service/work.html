@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<h1>Your personal service book</h1>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Mileage</th>
+    <th>Type of work</th>
+    <th>Cost, BYN</th>
+    <th>Service station</th>
+    <th>Comment</th>
+  </tr>
+  {% for work in object_list %}
+      <tr>
+          <td>{{ work.date }}</td>
+          <td>{{ work.mileage }}</td>
+          <td>{{ work.type_of_work }}</td>
+          <td>{{ work.cost }}</td>
+          <td>{{ work.station }}</td>
+          <td>{{ work.comment }}</td>
+          <td><a href="delete/{{work.id}}">Delete</a></td>
+      </tr>
+  {% endfor %}
+
+</table>
+
+
+    <ul_1>
+        <li><a href="{{ url("service:add_work") }}">Add work</a></li>
+    </ul_1>
+
+{% endblock %}
+

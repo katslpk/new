@@ -13,7 +13,7 @@ SECRET_KEY = _settings.SECRET_KEY
 
 DEBUG = _settings.DEBUG
 
-ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
+ALLOWED_HOSTS = _settings.ALLOWED_HOSTS + ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,8 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "apps.about",
-    "apps.education",
-    "apps.contact",
+    "apps.service",
+    "apps.statistic",
     "apps.onboarding",
     "apps.blog",
     "rest_framework",
@@ -43,13 +43,12 @@ MIDDLEWARE = [
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
 ]
 
-
 ROOT_URLCONF = "project.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [PROJECT_DIR / "jinja2",],
+        "DIRS": [PROJECT_DIR / "jinja2", ],
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "project.utils.jinja2env.build_jinja2_environment",
@@ -91,7 +90,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
@@ -123,7 +121,6 @@ EMAIL_USE_SSL = _settings.EMAIL_USE_SSL
 EMAIL_USE_TLS = _settings.EMAIL_USE_TLS
 
 EMAIL_FROM = _settings.EMAIL_FROM
-
 
 # REDIS_HOST = 'localhost'
 # REDIS_PORT = '6379'

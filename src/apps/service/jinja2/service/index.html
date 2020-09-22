@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 
-{% block head %}{% endblock %}
 
 {% block body %}
 
 <h1> This is your personal service book</h1>
 
 <p>
-    Hi! This is a website where you can watch your car. Please add new car.
+    Please, select your car and add all information about service works.
 </p>
 
 {% for car in object_list %}
+
 <br/><div class="nes-container is-rounded">
     <a href="{{ car.get_absolute_url() }}"> <h2>{{ car.car_model }}</h2></a><br/>
 </div><br/>
 
 {% endfor %}
-
         <p>
-            <a href="{{ url('about:car_add') }}">
+            <a href="{{ url('service:add_work') }}">
                 <button class="button">Add new car</button>
             </a>
         </p>
 
 {% endblock %}
+
