@@ -20,7 +20,7 @@ class CarInfo(models.Model):
     car_model = models.TextField()
     car_year = models.DecimalField(max_digits=4, decimal_places=0)
     start_mileage = models.DecimalField(max_digits=8, decimal_places=0)
-    engine_volume = models.DecimalField(max_digits=2, decimal_places=1,)
+    engine_volume = models.DecimalField(max_digits=2, decimal_places=1, )
     engine_type = models.ForeignKey(EngineType, on_delete=models.CASCADE)
     vin = models.TextField(unique=True, max_length=17)
     car_license_plate = models.TextField(unique=True)

@@ -13,7 +13,7 @@ app_name = EducationConfig.name
 
 urlpatterns = [
     path("", ALLCarView.as_view(), name="index"),
-    path("car/<int:pk>/work/", csrf_exempt(CarWorkView.as_view()), name="work",),
+    path("car/<int:pk>/work/", csrf_exempt(CarWorkView.as_view()), name="work", ),
     path(
         "car/<int:id>/work/delete/<int:pk>/",
         csrf_exempt(WorkDelete.as_view()),

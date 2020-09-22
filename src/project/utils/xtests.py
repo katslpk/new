@@ -19,10 +19,10 @@ User = get_user_model()
 
 class UserTestMixin:
     def create_user(
-        self,
-        placeholder: Optional[str] = None,
-        user_kw: Optional[Dict] = None,
-        verified=False,
+            self,
+            placeholder: Optional[str] = None,
+            user_kw: Optional[Dict] = None,
+            verified=False,
     ) -> User:
         placeholder = placeholder or urandom(4).hex()
         form_data = {
@@ -80,18 +80,18 @@ class UserTestMixin:
 
 class TemplateResponseTestMixin:
     def validate_response(
-        self,
-        *,
-        url: str,
-        client: Optional = None,
-        method: Optional[str] = "get",
-        form_data: Optional[Dict] = None,
-        expected_status_code: Optional[int] = 200,
-        expected_view: Optional[type] = None,
-        expected_view_name: Optional[str] = None,
-        expected_template: Optional[str] = None,
-        content_filters: Optional[Collection[Callable[[bytes], bool]]] = None,
-        expected_redirect_chain: Optional[List] = None,
+            self,
+            *,
+            url: str,
+            client: Optional = None,
+            method: Optional[str] = "get",
+            form_data: Optional[Dict] = None,
+            expected_status_code: Optional[int] = 200,
+            expected_view: Optional[type] = None,
+            expected_view_name: Optional[str] = None,
+            expected_template: Optional[str] = None,
+            content_filters: Optional[Collection[Callable[[bytes], bool]]] = None,
+            expected_redirect_chain: Optional[List] = None,
     ):
         cli = client or self.client
         meth = getattr(cli, method)
@@ -137,15 +137,15 @@ class TemplateResponseTestMixin:
 
 class ApiTestMixin:
     def validate_response(
-        self,
-        url: str,
-        *,
-        client: Optional = None,
-        method: Optional[str] = "get",
-        headers: Optional[Dict[Text, Text]] = None,
-        data: Optional = None,
-        expected_status_code: Optional[int] = 200,
-        expected_response_payload: Optional = None,
+            self,
+            url: str,
+            *,
+            client: Optional = None,
+            method: Optional[str] = "get",
+            headers: Optional[Dict[Text, Text]] = None,
+            data: Optional = None,
+            expected_status_code: Optional[int] = 200,
+            expected_response_payload: Optional = None,
     ):
         cli = client or self.client
         meth = getattr(cli, method)
